@@ -1,0 +1,95 @@
+/* General Chatbox Styling */
+.chatbox {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Chatlogs Area - Where messages will appear */
+.chatlogs {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #fff;
+}
+
+/* Styling for individual chat messages */
+.chatlogs .message {
+    display: flex;
+    gap: 10px;
+    max-width: 80%;
+}
+
+.chatlogs .message.user {
+    justify-content: flex-end;
+}
+
+.chatlogs .message.bot {
+    justify-content: flex-start;
+}
+
+.chatlogs .message .text {
+    padding: 10px;
+    border-radius: 15px;
+    background-color: #ddd;
+    max-width: 80%;
+    color: #333; /* Dark black text color */
+    font-size: 16px;
+}
+
+.chatlogs .message.user .text {
+    background-color: #4CAF50;
+    color: white;
+    align-self: flex-end;
+}
+
+.chatlogs .message.bot .text {
+    background-color: #2f2f2f; /* Dark black background */
+    color: #fff; /* White text on dark background */
+}
+
+/* User Input Area - Where the user types the message */
+.user-input {
+    display: flex;
+    padding: 10px;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+}
+
+.user-input input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    font-size: 16px;
+    outline: none;
+}
+
+.user-input input:focus {
+    border-color: #4CAF50;
+}
+
+.user-input button {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.user-input button:hover {
+    background-color: #45a049;
+}

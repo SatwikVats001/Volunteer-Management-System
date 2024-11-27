@@ -1,0 +1,105 @@
+/* Add smooth transitions and hover effects to cards */
+.event-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.event-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Event title styling */
+.event-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+/* Event description and details */
+.event-description {
+    font-size: 1rem;
+    color: #34495e;
+    margin-bottom: 1rem;
+}
+
+/* Button styling */
+.event-button {
+    position: relative;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    background-color: #007bff;
+    color: white;
+    border: none;
+}
+
+.event-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.event-button:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+.event-button:disabled:hover {
+    transform: none;
+}
+
+/* Status badges */
+.text-success {
+    font-weight: bold;
+    color: #28a745;
+}
+
+.text-warning {
+    font-weight: bold;
+    color: #ffc107;
+}
+
+.text-danger {
+    font-weight: bold;
+    color: #dc3545;
+}
+
+/* Smooth fade-in effect for the whole page */
+body {
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Keyframe for fade-in effect */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Adding a subtle scroll animation to the event cards */
+.event-card {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.event-card:nth-child(odd) {
+    animation-delay: 0.2s;
+}
+
+.event-card:nth-child(even) {
+    animation-delay: 0.4s;
+}
+
