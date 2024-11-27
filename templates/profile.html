@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Volunteer Profile Management</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="profile_picture" class="form-label">Profile Picture</label>
+            {% if profile.profile_picture %}
+            <div>
+                <img src="{{ url_for('static', filename='uploads/' + profile.profile_picture) }}" alt="Profile Picture" width="150">
+            </div>
+            {% endif %}
+            <input type="file" name="profile_picture" id="profile_picture" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label for="skills" class="form-label">Skills (comma-separated)</label>
+            <input type="text" name="skills" id="skills" class="form-control" value="{{ ', '.join(profile.skills) }}">
+        </div>
+
+        <div class="mb-3">
+            <label for="availability" class="form-label">Availability</label>
+            <select name="availability" id="availability" class="form-select" multiple>
+                <option value="Monday" {% if 'Monday' in profile.availability %}selected{% endif %}>Monday</option>
+                <option value="Tuesday" {% if 'Tuesday' in profile.availability %}selected{% endif %}>Tuesday</option>
+                <option value="Wednesday" {% if 'Wednesday' in profile.availability %}selected{% endif %}>Wednesday</option>
+                <option value="Thursday" {% if 'Thursday' in profile.availability %}selected{% endif %}>Thursday</option>
+                <option value="Friday" {% if 'Friday' in profile.availability %}selected{% endif %}>Friday</option>
+                <option value="Saturday" {% if 'Saturday' in profile.availability %}selected{% endif %}>Saturday</option>
+                <option value="Sunday" {% if 'Sunday' in profile.availability %}selected{% endif %}>Sunday</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update Profile</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card text-bg-dark position-relative">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/440px-Image_created_with_a_mobile_phone.png" class="card-img dimmed-image" alt="..." style="height: 850px;">
+                <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center">
+                    <h5 class="card-title text-light text-center fs-1">Welcome, {{session['username']}}! You are logged in as an Admin</h5>
+                    <p class="card-text text-light text-center fs-3">Thank you for visiting our site.</p>
+                    <p class="card-text text-light text-center fs-4"><small>Manage Volunteer and a task</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<div class="container mt-5">
+    <h2 class="text-center">Admin Dashboard</h2>
+    <p class="text-center">Welcome, {{ session['username'] }}! You are logged in as an Admin.</p>
+
+    <!-- Employee-specific content here -->
+    <div class="row">
+        <!-- View Events Section -->
+        <div class="col-md-6">
+            <h4>Add a task</h4>
+            <p>Add a task aas per your requirement.</p>
+            <a href="/add-event" class="btn btn-primary w-100">Add a task</a>
+        </div>
+
+        <!-- Edit Profile Section -->
+        <div class="col-md-6">
+            <h4>Manage A Task Request</h4>
+            <p>Approve or reject the task request for connect to a volunteer</p>
+            <a href="/manage-interests" class="btn btn-warning w-100">Manage Requeste</a>
+        </div>
+
+        <div class="col-md-12">
+            <h4>Show Volunteer</h4>
+            <p>Approve or reject the task request for connect to a volunteer</p>
+            <a href="/approved-volunteers" class="btn btn-warning w-100">Show Volunteer</a>
+        </div>
+    </div>
+
+    <!-- Log Out Button -->
+    <div class="mt-4">
+        <a href="{{ url_for('logout') }}" class="btn btn-danger w-100">Log Out</a>
+    </div>
+</div>
+
+<br>
+<br><br><br><br> ///
+{% endblock %}
+

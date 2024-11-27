@@ -1,0 +1,98 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card text-bg-dark position-relative">
+                <img src="https://cdn.prod.website-files.com/62a9e41d28a7ab25849bce9c/62fcab0db38819bef2500673_Is%20image%20processing%20part%20of%20machine%20learning.jpg" alt="..." style="height: 850px;">
+                <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center">
+                    <h5 class="card-title text-light text-center fs-1">Welcome, {{ username }}! You are logged in as an Employee</h5>
+                    <p class="card-text text-light text-center fs-3">Work Hard, Be Punctual</p>
+                    <p class="card-text text-light text-center fs-4"><small>Manage Volunteers and Tasks</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Employee Dashboard</h2>
+    <p class="text-center">Welcome, {{ username }}! You are logged in as an Employee.</p>
+
+    <!-- Summary Section -->
+    <div class="row text-center">
+        <div class="col-md-3">
+            <div class="card bg-primary text-white mb-4">
+                <div class="card-body">
+                    <h5>Total Events</h5>
+                    <p class="fs-3">{{ total_events }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-success text-white mb-4">
+                <div class="card-body">
+                    <h5>Tasks Assigned</h5>
+                    <p class="fs-3">{{ tasks_assigned }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-warning text-white mb-4">
+                <div class="card-body">
+                    <h5>Pending Tasks</h5>
+                    <p class="fs-3">{{ pending_tasks }}</p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- Action Section -->
+    <div class="row">
+        <!-- View Events Section -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body text-dark">
+                    <h4>View Events</h4>
+                    <p>Check out the latest events and show your interest.</p>
+                    <a href="{{ url_for('show_event') }}" class="btn btn-primary w-100">View Events</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit Profile Section -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body text-dark">
+                    <h4>Edit Profile</h4>
+                    <p>Update your profile information.</p>
+                    <a href="{{ url_for('edit_profile') }}" class="btn btn-warning w-100">Edit Profile</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Assign Task Section -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body text-dark">
+                    <h4>Assign Task</h4>
+                    <p>Manage and assign tasks to volunteers.</p>
+                    <a href="{{ url_for('assign_tasks', username=username) }}" class="btn btn-success w-100">Assign Task</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Log Out Button -->
+    <div class="mt-4">
+        <a href="{{ url_for('logout') }}" class="btn btn-danger w-100">Log Out</a>
+    </div>
+</div>
+<br><br><br><br><br><div class=""></div>
+
+
+
+{% endblock %}

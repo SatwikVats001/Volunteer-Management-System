@@ -1,0 +1,41 @@
+{% extends 'index.html' %}
+{% block content %}
+<h1>Approved Volunteers</h1>
+
+{% if volunteers %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="text-light"> Sno.</th>
+                <th class="text-light">ID</th>
+                <th class="text-light">Name</th>
+                <th class="text-light">Event Name</th>
+                <th class="text-light">Application Date</th>
+                <th class="text-light">Application Time</th>
+                <th class="text-light"> Add a Task</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for volunteer in volunteers %}
+                <tr>
+                    <th class="text-light">{{ loop.index }}</th>
+                    <td class="text-light">{{ volunteer['_id'] }}</td>
+                    <td class="text-light">{{ volunteer['username'] }}</td>
+                    <td class="text-light">{{ volunteer['event_name'] }}</td>
+                    <td class="text-light">{{ volunteer['approved_at'].strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                    <td class="text-light">{{ volunteer['approved_at'].strftime('%H:%M:%S') }}</td>
+                    <td class="tex-light"> <button class="btn btn-outline-danger">
+                        Add a Task
+                    </button></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No approved volunteers available at this moment. Please check back later.</p>
+{% endif %}
+
+<div class="text-center mt-4">
+    <a href="{{ url_for('admin_dashboard') }}" class="btn btn-outline-info">Back to Dashboard</a>
+</div>
+{% endblock content %}

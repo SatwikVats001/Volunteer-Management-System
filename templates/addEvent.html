@@ -1,0 +1,45 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Add New Event</h2>
+    <div class="card shadow">
+        <div class="card-header bg-dark text-white">
+            <h4 class="mb-0">Event Details</h4>
+        </div>
+        <div class="card-body">
+            <form action="{{ url_for('addEvent') }}" method="POST">
+                <div class="mb-3">
+                    <label for="event_name" class="form-label">Task Name</label>
+                    <input type="text" id="event_name" name="event_name" class="form-control" placeholder="Enter event name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="event_description" class="form-label">Task Description</label>
+                    <textarea id="event_description" name="event_description" class="form-control" rows="4" placeholder="Enter a brief description" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="contact" class="form-label">Contact Details</label>
+                    <input type="text" id="contact" name="contact" class="form-control" rows="4" placeholder="Enter Contact Number" required></input>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="event_date" class="form-label">Deadline of Task</label>
+                        <input type="date" id="event_date" name="event_date" class="form-control" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="event_time" class="form-label">Time</label>
+                        <input type="time" id="event_time" name="event_time" class="form-control" required>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="event_location" class="form-label">Event Location</label>
+                    <input type="text" id="event_location" name="event_location" class="form-control" placeholder="Enter event location" required>
+                </div>
+                <button type="submit" class="btn btn-outline-success w-100">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="text-center mt-4">
+        <a href="{{ url_for('admin_dashboard') }}" class="btn btn-outline-info">Back to Dashboard</a>
+    </div>
+</div>
+{% endblock content %}

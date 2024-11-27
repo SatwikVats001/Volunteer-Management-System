@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2>Assigned Tasks for {{ username }}</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="text-light text-bg-dark">Sno.</th>
+                <th class="text-light text-bg-dark">Event Name</th>
+                <th class="text-light text-bg-dark">Approved At</th>
+                <th class="text-light text-bg-dark">Assigned By</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+            <tr>
+                <td class="text-light">{{ loop.index }}</td>
+                <td class="text-light">{{ task.event_name }}</td>
+                <td class="text-light">{{ task.approved_at }}</td>
+                <td class="text-light">{{ task.created_by }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div> 
+
+<div class="text-center mt-4">
+    <a href="{{ url_for('employee_dashboard') }}" class="btn btn-outline-info">Back to Dashboard</a>
+</div>
+{% endblock content %}

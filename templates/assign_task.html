@@ -1,0 +1,55 @@
+{% extends 'index.html' %}
+{% block content %}
+<h1>Assign and Track Tasks for Volunteer</h1>
+
+<!-- Task Assignment Form -->
+<form method="POST" action="{{ url_for('assign_and_track_task', volunteer_id=volunteer['_id']) }}">
+    <div class="form-group">
+        <label for="task_name">Task Name</label>
+        <input type="text" id="task_name" name="task_name" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="task_description">Task Description</label>
+        <textarea id="task_description" name="task_description" class="form-control" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Assign Task</button>
+</form>
+
+<hr>
+
+<!-- Display Assigned Tasks -->
+<h2>Assigned Tasks</h2>
+{% if tasks %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Task Name</th>
+                <th>Task Description</th>
+                <th>Progress</th>
+                <th>Mark Complete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+                <tr>
+                    <td>{{ task['task_name'] }}</td>
+                    <td>{{ task['task_description'] }}</td>
+                    <td>{{ task['progress'] }}%</td>
+                    <td>
+                        <form method="POST" action="{{ url_for('update_task_progress', task_id=task['_id']) }}">
+                            <input type="checkbox" name="task_completed" class="form-check-input" 
+                                   {% if task['progress'] == 100 %}checked{% endif %}>
+                            <button type="submit" class="btn btn-sm btn-primary">Update</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No tasks assigned yet. Please assign a task.</p>
+{% endif %}
+<div class="text-center mt-4">
+    <a href="{{ url_for('admin_dashboard') }}" class="btn btn-outline-info">Back to Dashboard</a>
+</div>
+{% endblock content %}

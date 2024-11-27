@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Notifications</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            {% if notifications %}
+                <ul class="list-group">
+                    {% for notification in notifications %}
+                        <li class="list-group-item">
+                            <p class="mb-1"><strong>Message:</strong> {{ notification['message'] }}</p>
+                            <p class="mb-1"><strong>From:</strong> {{ notification['from'] }}</p>
+                            <p class="text-muted"><small><strong>Date:</strong> {{ notification['timestamp'] }}</small></p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <div class="alert alert-info text-center" role="alert">
+                    No notifications yet.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

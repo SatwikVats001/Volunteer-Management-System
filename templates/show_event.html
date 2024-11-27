@@ -1,0 +1,51 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Available Events</h1>
+
+    {% if events %}
+        <div class="row">
+            {% for event in events %}
+                <div class="col-md-6 mb-4">
+                    <div class="card event-card container-fluid">
+                        <div class="card-body">
+                            <h5 class="card-title event-title">{{ event['name'] }}</h5>
+                            <p class="card-text event-description"><strong>Description:</strong> {{ event['description'] }}</p>
+                            <p class="card-text"><strong>Date:</strong> {{ event['date'] }}</p>
+                            <p class="card-text"><strong>Time:</strong> {{ event['time'] }}</p>
+                            <p class="card-text"><strong>Location:</strong> {{ event['location'] }}</p>
+                            <p class="card-text"><strong>Status:</strong> 
+                                {% if event['status'] == 'approved' %}
+                                    <span class="text-success">Approved</span>
+                                {% elif event['status'] == 'pending' %}
+                                    <span class="text-warning">Pending</span>
+                                {% else %}
+                                    <span class="text-danger">Not Approved</span>
+                                {% endif %}
+                            </p>
+                            <form action="{{ url_for('interested_in_event', event_id=event['_id']) }}" method="POST">
+                                <button type="submit" 
+                                        class="btn btn-primary w-100 event-button"
+                                        {% if event['status'] == 'pending' or event['status'] == 'approved' %} disabled {% endif %}>
+                                    {% if event['status'] == 'pending' %}
+                                        Request Sent
+                                    {% elif event['status'] == 'approved' %}
+                                        Approved
+                                    {% else %}
+                                        Interested
+                                    {% endif %}
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info text-center" role="alert">
+            No events available at the moment.
+        </div>
+    {% endif %}
+</div>
+{% endblock content %}

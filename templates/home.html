@@ -1,0 +1,135 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="hero-section">
+    <div class="hero-content text-center">
+        <h1 class="hero-title">Welcome to Volunteer Management</h1>
+        <p class="hero-subtitle">Connecting volunteers to impactful opportunities.</p>
+        <a href="#join-us" class="btn btn-primary btn-lg mt-3">Join Us Now</a>
+        <a href="#chat-bot" class="btn btn-primary btn-lg mt-3">Assistant</a>
+    </div>
+</div>
+
+<!-- Features Section -->
+<div class="features-section container-fluid bg-dark text-light py-5">
+    <h2 class="text-center text-light mb-4">Why Join Us?</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-4 text-center">
+            <img src="https://images.stockcake.com/public/e/7/1/e716cb21-181f-4c7e-aa26-c77129c16702_large/teamwork-and-technology-stockcake.jpg" alt="Feature 1" class="feature-img rounded-circle" style="height: 200px; width: 200px;">
+            <h3>Organize Events</h3>
+            <p>Plan, manage, and execute volunteer events effortlessly.</p>
+        </div>
+        <div class="col-md-4 text-center">
+            <img src="{{ url_for('static', filename='image/intro1.jpg') }}" alt="Feature 2" class="feature-img rounded-circle" style="height: 200px; width: 200px;">
+            <h3>Track Contributions</h3>
+            <p>Monitor volunteer hours and recognize achievements.</p>
+        </div>
+        <div class="col-md-4 text-center">
+            <img src="https://desiweds.com/wp-content/uploads/2021/11/wedding-decorator-style-budget-hero-scaled.jpg" alt="Feature 3" class="feature-img rounded-circle" style="height: 200px; width: 200px;">
+            <h3>Make an Impact</h3>
+            <p>Collaborate with like-minded individuals to create change.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Carousel and Quote Section -->
+<div class="container-lg mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://managementweekly.org/wp-content/uploads/2021/02/organizing-header.png" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://www.datocms-assets.com/64859/1706288781-define-management-core-principles-unveiled-1706288781216.png?q=70&auto=format&w=1280" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://thumbs.dreamstime.com/b/people-planning-concept-entrepreneurship-calendar-schedule-vector-business-meeting-events-organizing-filling-course-160993060.jpg" class="d-block w-100" alt="...">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 d-flex align-items-center">
+            <blockquote class="blockquote text-center">
+                <p>"Volunteers don’t get paid, not because they’re worthless, but because they’re priceless."</p>
+                <footer class="blockquote-footer text-light">Sherry Anderson</footer>
+            </blockquote>
+        </div>
+    </div>
+</div>
+
+<!-- Testimonials Section -->
+<div class="container mt-5">
+    <h2 class="text-center mb-4">What Our Volunteers Say</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body text-dark">
+                    <p>"Volunteering here has been life-changing! I've met amazing people and made a real impact."</p>
+                    <h5 class="card-title">- Jane Doe</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body text-dark">
+                    <p>"This platform made it so easy to find opportunities that matched my skills."</p>
+                    <h5 class="card-title">- John Smith</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body text-dark">
+                    <p>"I love how organized and supportive the team is. Highly recommend joining!"</p>
+                    <h5 class="card-title">- Emily Johnson</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Call to Action Form -->
+<div class="container bg-light py-5 mt-5" id="join-us">
+    <h2 class="text-center mb-4 text-dark">Join Our Community</h2>
+    <form>
+        <div class="mb-3">
+            <label for="name" class="form-label text-dark">Full Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter your name">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label text-dark">Email Address</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter your email">
+        </div>
+        <div class="mb-3">
+            <label for="message" class="form-label text-dark">Why do you want to join?</label>
+            <textarea class="form-control" id="message" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Submit</button>
+    </form>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-light text-center py-3 mt-5">
+    <p>&copy; 2024 Volunteer Management. All Rights Reserved.</p>
+</footer>
+
+
+
+<div class="container-fluid mt-5">
+    <h1 class="text-center text-light">How Can I Help You??</h1>
+    <div class="chatbox" id="chat-bot">
+        <div class="chatlogs" id="chatlogs"></div>
+        <div class="user-input">
+            <input type="text" id="user-message" placeholder="Ask a question..." onkeydown="if(event.key === 'Enter'){sendMessage()}">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+</div>
+
+<br><br><br><br><br><br>////
+
+<script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
+{% endblock %}
